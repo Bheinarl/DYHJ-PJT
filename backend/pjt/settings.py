@@ -181,6 +181,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',  # Django 개발 서버 주소
     'http://127.0.0.1:5173',  # Django 개발 서버 주소
     'http://54.89.24.244',    # 서버 배포 서버 주소
+    'https://dyhj2024.site',  # 도메인 주소
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -198,6 +199,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:5173',  # Vue.js dev server 주소
     'http://localhost:5173',
+    'https://dyhj2024.site',  # 도메인 주소
 ]
 
 SIMPLE_JWT = {
