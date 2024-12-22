@@ -160,10 +160,13 @@ USE_TZ = True
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # static 폴더 설정
+import os
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static', 
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # BASE_DIR에 따라 경로가 적절히 변경될 수 있음
 
 # media 파일 설정 (업로드된 파일 저장)
 MEDIA_URL = '/media/'
