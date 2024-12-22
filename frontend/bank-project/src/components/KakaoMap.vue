@@ -119,7 +119,7 @@ const moveToCurrentLocation = () => {
 // 카카오맵 스크립트를 동적으로 로드
 const loadKakaoMap = () => {
   const script = document.createElement('script');
-  script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=c56c3d493aee00d132376b3af3029173&autoload=false&libraries=services`;
+  script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=	fccdd73de04507d08effc8ec6a07cfce&autoload=false&libraries=services`;
   script.onload = () => window.kakao.maps.load(initMap);
   document.head.appendChild(script);
 };
