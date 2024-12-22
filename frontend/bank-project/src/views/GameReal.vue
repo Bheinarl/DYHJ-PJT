@@ -512,6 +512,7 @@ const endDateValue = computed(() =>
 // 보유 종목 창에서 행 클릭 시 바로 해당 주식 정보 볼 수 있도록 함
 function selectStock(stockName) {
   selectedStock.value = stockName; // 선택된 종목 업데이트
+  updateChart()
 }
 
 
