@@ -94,7 +94,7 @@ const profile = ref({
   profile_picture: '', // 프로필 사진 URL
   email: '',
 });
-const defaultProfileImage = 'http://127.0.0.1:8000/static/images/default-user.png';
+const defaultProfileImage = 'https://dyhj2024.site/static/images/default-user.png';
 
 const loading = ref(true);
 const isEditing = ref(false);
@@ -102,7 +102,7 @@ const profilePicture = ref(null);  // 파일 상태 관리
 
 const fetchProfile = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/accounts/profile/', {
+    const response = await axios.get('https://dyhj2024.site/accounts/profile/', {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`,
       },

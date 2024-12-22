@@ -16,9 +16,9 @@ EXCHANGE_RATE_API_KEY = 'TUwyZMxyTt6XP6rTujYY02UCuSPWDHDb'
 # 동연 API 키 = "etB20sfgNjlqWRXSwrActTWgwVjJnsWy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['dyhj2024.site', '54.89.24.244']
 
 # 사용자 수정
 AUTH_USER_MODEL = 'accounts.CustomUser'
