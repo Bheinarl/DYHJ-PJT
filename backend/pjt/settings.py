@@ -164,6 +164,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static', 
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # media 파일 설정 (업로드된 파일 저장)
 MEDIA_URL = '/media/'
