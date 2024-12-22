@@ -9,6 +9,7 @@
         :src="profile.profile_picture" 
         alt="Profile Picture" 
         class="profile-pic"
+        @error="handleImageError"
       />
 
 
@@ -94,7 +95,11 @@ const profile = ref({
   profile_picture: '', // 프로필 사진 URL
   email: '',
 });
-const defaultProfileImage = `https://dyhj2024.site/static/images/default-user.png`;
+
+const handleImageError = (event) => {
+  console.log("Image failed to load:", event.target.src);  // 이미지 URL 출력
+  event.target.src = '/default-user.png';   // 이미지가 없을 경우 기본 이미지로 대체
+};
 
 const loading = ref(true);
 const isEditing = ref(false);
@@ -109,10 +114,7 @@ const fetchProfile = async () => {
     });
     profile.value = response.data;
     console.log(profile.value)
-    // profile_picture가 없거나 잘못된 경우 디폴트 설정
-    if (!profile.value.profile_picture || profile.value.profile_picture.includes('/media/static/')) {
-      profile.value.profile_picture = defaultProfileImage;
-    }
+
   } catch (error) {
     console.error('Failed to fetch profile:', error.response?.data || error.message);
     alert('Failed to load profile.');

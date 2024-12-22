@@ -512,9 +512,17 @@ const endDateValue = computed(() =>
 // 보유 종목 창에서 행 클릭 시 바로 해당 주식 정보 볼 수 있도록 함
 function selectStock(stockName) {
   selectedStock.value = stockName; // 선택된 종목 업데이트
-  updateChart()
-}
 
+  // 데이터가 없으면 로드 후 업데이트
+  if (!stockData.value[selectedStock.value]) {
+    console.log("데이터 로딩 중...");
+    updateStockUrl().then(() => {
+      updateChart(); // 데이터 로드 후 차트 업데이트
+    });
+  } else {
+    updateChart(); // 데이터가 이미 있으면 바로 차트 업데이트
+  }
+}
 
 // 랜덤한 시작 날짜 생성
 async function fetchRandomDate() {
