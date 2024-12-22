@@ -36,10 +36,11 @@
           </div>
           <!-- 프로필 사진 출력 -->
           <img 
-            :src="user.profile_picture" 
+            :src="user.profile_picture.startsWith('/media/media/') 
+                  ? `https://dyhj2024.site${user.profile_picture}` 
+                  : 'https://dyhj2024.site/static/images/default-user.png'" 
             alt="User Avatar" 
             class="avatar" 
-            @error="handleImageError"
           />
 
 <!-- 
@@ -133,11 +134,6 @@ const pagination = ref({
   now_page_no: 1,
   items_per_page: 5,
 });
-
-const handleImageError = (event) => {
-  console.log("Image failed to load:", event.target.src);  // 이미지 URL 출력
-  event.target.src = '/default-user.png';   // 이미지가 없을 경우 기본 이미지로 대체
-};
 
 const paginatedLeaderboard = computed(() => {
   const filteredLeaderboard = leaderboard.value.filter((user) => user.max_score > 0);

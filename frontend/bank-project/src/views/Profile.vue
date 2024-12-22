@@ -9,7 +9,6 @@
         :src="profile.profile_picture" 
         alt="Profile Picture" 
         class="profile-pic"
-        @error="handleImageError"
       />
 
 
@@ -95,11 +94,7 @@ const profile = ref({
   profile_picture: '', // 프로필 사진 URL
   email: '',
 });
-
-const handleImageError = (event) => {
-  console.log("Image failed to load:", event.target.src);  // 이미지 URL 출력
-  event.target.src = '/default-user.png';   // 이미지가 없을 경우 기본 이미지로 대체
-};
+const defaultProfileImage = 'http://127.0.0.1:8000/static/images/default-user.png';
 
 const loading = ref(true);
 const isEditing = ref(false);
@@ -107,14 +102,17 @@ const profilePicture = ref(null);  // 파일 상태 관리
 
 const fetchProfile = async () => {
   try {
-    const response = await axios.get(`https://dyhj2024.site/accounts/profile/`, {
+    const response = await axios.get('http://127.0.0.1:8000/accounts/profile/', {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`,
       },
     });
     profile.value = response.data;
     console.log(profile.value)
-
+    // profile_picture가 없거나 잘못된 경우 디폴트 설정
+    if (!profile.value.profile_picture || profile.value.profile_picture.includes('/media/static/')) {
+      profile.value.profile_picture = defaultProfileImage;
+    }
   } catch (error) {
     console.error('Failed to fetch profile:', error.response?.data || error.message);
     alert('Failed to load profile.');
@@ -122,6 +120,24 @@ const fetchProfile = async () => {
     loading.value = false;
   }
 };
+
+
+
+// const updateProfile = async () => {
+//   try {
+//     await axios.patch('http://127.0.0.1:8000/accounts/update_profile/', profile.value, {
+//       headers: {
+//         Authorization: `Token ${localStorage.getItem('token')}`,
+//       },
+//     });
+//     alert('Profile updated successfully!');
+//     isEditing.value = false;
+//   } catch (error) {
+//     console.error('Failed to update profile:', error);
+//   }
+// };
+
+
 
 const updateProfile = async () => {
   const formData = new FormData();
@@ -146,7 +162,7 @@ const updateProfile = async () => {
 
   try {
     const response = await axios.patch(
-      `https://dyhj2024.site/accounts/update_profile/`,
+      'http://127.0.0.1:8000/accounts/update_profile/',
       formData,
       {
         headers: {
