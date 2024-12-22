@@ -162,7 +162,7 @@ const updateProfile = async () => {
 
   try {
     const response = await axios.patch(
-      'http://127.0.0.1:8000/accounts/update_profile/',
+      'https://dyhj2024.site/accounts/update_profile/',
       formData,
       {
         headers: {
