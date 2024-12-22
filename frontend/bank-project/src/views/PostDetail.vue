@@ -286,6 +286,8 @@ onMounted(async () => {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   color: #333;
+  height: 80vh; /* 화면 높이의 80% */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
 }
 
 /* 제목 스타일 */
