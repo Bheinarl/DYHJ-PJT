@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
     my_investor_type = models.TextField(null=True, blank=True)  # my_investor_type 필드 추가
     max_score = models.IntegerField(default=0)  # max_score 필드 추가
     profile_picture = models.ImageField(
-        upload_to='media/images/',
+        upload_to='images/',
         default='static/images/default-user.png',  # 기본 이미지 설정
         blank=True, 
         null=True
