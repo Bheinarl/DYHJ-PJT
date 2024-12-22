@@ -28,7 +28,7 @@ const router = useRouter();
 
 const login = async () => {
   try {
-    const response = await axios.post(`${process.env.VITE_API_BASE_URL}api/auth/login/`, {
+    const response = await axios.post(`https://dyhj2024.site/api/auth/login/`, {
       username: username.value,
       password: password.value,
     });

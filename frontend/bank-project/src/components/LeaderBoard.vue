@@ -37,8 +37,8 @@
           <!-- 프로필 사진 출력 -->
           <img 
             :src="user.profile_picture.startsWith('/media/media/') 
-                  ? `${process.env.VITE_API_BASE_URL}${user.profile_picture}` 
-                  : `${process.env.VITE_API_BASE_URL}static/images/default-user.png`" 
+                  ? `https://dyhj2024.site/${user.profile_picture}` 
+                  : `https://dyhj2024.site/static/images/default-user.png`" 
             alt="User Avatar" 
             class="avatar" 
           />
@@ -157,7 +157,7 @@ const calculateRanks = (data) => {
 const fetchLeaderboard = async () => {
   console.log(leaderboard.value)
   try {
-    const leaderboardResponse = await axios.get(`${process.env.VITE_API_BASE_URL}accounts/leaderboard/`, {
+    const leaderboardResponse = await axios.get(`https://dyhj2024.site/accounts/leaderboard/`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("token")}`,
       },
@@ -173,7 +173,7 @@ const fetchLeaderboard = async () => {
       pagination.value.total_count / pagination.value.items_per_page
     );
 
-    const profileResponse = await axios.get(`${process.env.VITE_API_BASE_URL}accounts/profile/`, {
+    const profileResponse = await axios.get(`https://dyhj2024.site/accounts/profile/`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("token")}`,
       },

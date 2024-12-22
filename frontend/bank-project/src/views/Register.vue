@@ -32,7 +32,7 @@ const router = useRouter();
 
 const register = async () => {
   try {
-    const response = await axios.post(`${process.env.VITE_API_BASE_URL}api/auth/registration/`, {
+    const response = await axios.post(`https://dyhj2024.site/api/auth/registration/`, {
       username: username.value,
       password1: password.value,
       password2: password2.value,

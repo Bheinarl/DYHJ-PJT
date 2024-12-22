@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://54.89.24.244/api',
+  baseURL: 'https://dyhj2024.site/api',
   withCredentials: true,
 });
 

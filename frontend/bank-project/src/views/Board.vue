@@ -28,7 +28,7 @@ const posts = ref([]);
 // 게시글 불러오기
 const fetchPosts = async () => {
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/list/`);
+    const response = await fetch(`https://dyhj2024.site/api/posts/list/`);
     if (response.ok) {
       posts.value = await response.json();
     } else {

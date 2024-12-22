@@ -94,7 +94,7 @@ const profile = ref({
   profile_picture: '', // 프로필 사진 URL
   email: '',
 });
-const defaultProfileImage = `${process.env.VITE_API_BASE_URL}static/images/default-user.png`;
+const defaultProfileImage = `https://dyhj2024.site/static/images/default-user.png`;
 
 const loading = ref(true);
 const isEditing = ref(false);
@@ -102,7 +102,7 @@ const profilePicture = ref(null);  // 파일 상태 관리
 
 const fetchProfile = async () => {
   try {
-    const response = await axios.get(`${process.env.VITE_API_BASE_URL}accounts/profile/`, {
+    const response = await axios.get(`https://dyhj2024.site/accounts/profile/`, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`,
       },
@@ -144,7 +144,7 @@ const updateProfile = async () => {
 
   try {
     const response = await axios.patch(
-      `${process.env.VITE_API_BASE_URL}accounts/update_profile/`,
+      `https://dyhj2024.site/accounts/update_profile/`,
       formData,
       {
         headers: {

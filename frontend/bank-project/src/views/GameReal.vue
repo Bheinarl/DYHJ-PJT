@@ -519,7 +519,7 @@ function selectStock(stockName) {
 async function fetchRandomDate() {
   try {
     // 랜덤한 날짜 생성 API 호출 backend/stocks/views.py generate_random_date
-    const response = await axios.get(`${process.env.VITE_API_BASE_URL}api/stocks/generate_random_date/`);
+    const response = await axios.get(`https://dyhj2024.site/api/stocks/generate_random_date/`);
     if (response.data.status === 'success') {
       startDate.value = response.data.start_date;
       await updateStockUrl()  // 시작 날짜에 따른 주식 데이터 업데이트
@@ -536,7 +536,7 @@ async function fetchRandomDate() {
 //   const stockCode = stockStore.stockMapping[selectedStock.value];
 //   if (stockCode) {
 //     // 주식 데이터 API 호출 backend/stocks/views.py find_stock_data
-//     const apiUrl = `${process.env.VITE_API_BASE_URL}api/stocks/find_stock_data/${stockCode}/?start_date=${startDate.value}`;
+//     const apiUrl = `https://dyhj2024.site/api/stocks/find_stock_data/${stockCode}/?start_date=${startDate.value}`;
 //     console.log("apiUrl : ",apiUrl)
 
 //     fetchStockData(apiUrl);
@@ -551,7 +551,7 @@ const debouncedUpdateStockUrl = debounce(async () => {
     return;
   }
 
-  const apiUrl = `${process.env.VITE_API_BASE_URL}api/stocks/find_stock_data/${stockCode}/?start_date=${startDate.value}`;
+  const apiUrl = `https://dyhj2024.site/api/stocks/find_stock_data/${stockCode}/?start_date=${startDate.value}`;
   try {
     await fetchStockData(apiUrl);
   } catch (error) {
@@ -596,7 +596,7 @@ async function updateNews() {
   }
   try {
     // 뉴스 데이터 API 호출 backend/stocks/views.py fetch_news
-    const response = await axios.get(`${process.env.VITE_API_BASE_URL}api/stocks/fetch_news/?start_date=${currentDate.value}`);
+    const response = await axios.get(`https://dyhj2024.site/api/stocks/fetch_news/?start_date=${currentDate.value}`);
     if (response.data.status === 'success') {
       newsTitles.value = response.data.data;
     } else {
@@ -686,7 +686,7 @@ async function nextDay() {
     else investorType.value = '투기형';
 
     // 최종 자산과 투자자 유형 서버로 전송 (토큰 포함) backend/accounts/views.py update_max_score
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}accounts/update_max_score/`, {
+    const response = await fetch(`https://dyhj2024.site/accounts/update_max_score/`, {
       method: 'POST',
       headers: {
         'Authorization': `Token ${localStorage.getItem('token')}`, // 토큰을 헤더에 포함

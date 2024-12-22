@@ -67,7 +67,7 @@ const placeholderText = computed(() => {
 // 목표 환율 설정 함수
 const setAlert = async () => {
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}accounts/set_alert/`, {
+    const response = await fetch(`https://dyhj2024.site/accounts/set_alert/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const fetchExchangeRate = async () => {
   }
 
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}accounts/check_exchange_rate/?currency=${currency.value}`);
+    const response = await fetch(`https://dyhj2024.site/accounts/check_exchange_rate/?currency=${currency.value}`);
     const data = await response.json();
 
     if (response.ok) {

@@ -184,9 +184,9 @@ const fetchProducts = async (category, subcategory = '전체') => {
 
   try {
     if (category === 'funds') {
-      apiUrl = `${process.env.VITE_API_BASE_URL}finances/api/products/funds/${subcategory}/`;
+      apiUrl = `https://dyhj2024.site/finances/api/products/funds/${subcategory}/`;
     } else {
-      apiUrl = `${process.env.VITE_API_BASE_URL}finances/api/products/${category}/`;
+      apiUrl = `https://dyhj2024.site/finances/api/products/${category}/`;
     }
 
     const response = await axios.get(apiUrl);
@@ -248,7 +248,7 @@ const loadCurrentUser = async () => {
   }
   
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}accounts/get_current_user/`, {
+    const response = await fetch(`https://dyhj2024.site/accounts/get_current_user/`, {
       method: 'GET',
       headers: {
         Authorization: `Token ${token}`,

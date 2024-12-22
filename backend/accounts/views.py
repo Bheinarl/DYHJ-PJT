@@ -190,9 +190,9 @@ def profile(request):
     # 프로필 사진 경로 설정
     profile_data = serializer.data
     if not user.profile_picture:
-        profile_data['profile_picture'] = f"http://127.0.0.1:8000/static/images/default-user.png"
+        profile_data['profile_picture'] = f"https://dyhj2024.site/static/images/default-user.png"
     elif user.profile_picture.url.startswith('/media/'):
-        profile_data['profile_picture'] = f"http://127.0.0.1:8000{user.profile_picture.url}"
+        profile_data['profile_picture'] = f"https://dyhj2024.site{user.profile_picture.url}"
 
     return Response(profile_data)
 

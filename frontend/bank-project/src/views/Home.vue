@@ -29,7 +29,7 @@ const router = useRouter();
 
 // 기존 데이터 로드 함수들
 async function updateStockUrl() {
-  const apiUrl = `${process.env.VITE_API_BASE_URL}stocks/api/stocks/list/`;
+  const apiUrl = `https://dyhj2024.site/stocks/api/stocks/list/`;
   console.log('API URL:', apiUrl);
   try {
     await axios.get(apiUrl);
@@ -39,7 +39,7 @@ async function updateStockUrl() {
 }
 const fetchDataAndSaveDeposits = async () => {
   try {
-    await axios.get(`${process.env.VITE_API_BASE_URL}finances/api/fetch_and_save_products/deposits`);
+    await axios.get(`https://dyhj2024.site/finances/api/fetch_and_save_products/deposits`);
     console.log('데이터 수신 및 저장 완료');
   } catch (error) {
     console.error('데이터 수신 실패:', error);
@@ -47,7 +47,7 @@ const fetchDataAndSaveDeposits = async () => {
 };
 const fetchDataAndSaveSavings = async () => {
   try {
-    await axios.get(`${process.env.VITE_API_BASE_URL}finances/api/fetch_and_save_products/savings`);
+    await axios.get(`https://dyhj2024.site/finances/api/fetch_and_save_products/savings`);
     console.log('데이터 수신 및 저장 완료');
   } catch (error) {
     console.error('데이터 수신 실패:', error);
@@ -55,7 +55,7 @@ const fetchDataAndSaveSavings = async () => {
 };
 const fetchDataAndSaveFunds = async () => {
   try {
-    await axios.get(`${process.env.VITE_API_BASE_URL}finances/api/fetch_and_save_products/funds`);
+    await axios.get(`https://dyhj2024.site/finances/api/fetch_and_save_products/funds`);
     console.log('데이터 수신 및 저장 완료');
   } catch (error) {
     console.error('데이터 수신 실패:', error);

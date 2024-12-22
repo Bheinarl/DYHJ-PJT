@@ -5,7 +5,7 @@ export const useCounterStore = defineStore('counter', () => {
   const register = async (payload) => {
     try {
       const { username, password1, password2, email } = payload;
-      const response = await axios.post(`${process.env.VITE_API_BASE_URL}api/auth/registration/`, {
+      const response = await axios.post(`https://dyhj2024.site/api/auth/registration/`, {
         username,
         password1,
         password2,
@@ -22,7 +22,7 @@ export const useCounterStore = defineStore('counter', () => {
   const login = async (credentials) => {
     try {
       const { username, password } = credentials;
-      const response = await axios.post(`${process.env.VITE_API_BASE_URL}api/auth/login/`, {
+      const response = await axios.post(`https://dyhj2024.site/api/auth/login/`, {
         username,
         password,
       });

@@ -83,7 +83,7 @@ const loadPost = async () => {
   try {
     const id = route.params.id;
     const token = localStorage.getItem('token');
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/${id}/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/${id}/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ const loadCurrentUser = async () => {
   }
 
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}accounts/get_current_user/`, {
+    const response = await fetch(`https://dyhj2024.site/accounts/get_current_user/`, {
       method: 'GET',
       headers: {
         Authorization: `Token ${token}`,
@@ -146,7 +146,7 @@ const loadCurrentUser = async () => {
 const fetchComments = async (postId) => {
   try {
     const response = await axios.get(
-      `${process.env.VITE_API_BASE_URL}api/posts/${postId}/comments/`,
+      `https://dyhj2024.site/api/posts/${postId}/comments/`,
       { headers: { Authorization: `Token ${localStorage.getItem('token')}` } }
     );
     comments.value = response.data;
@@ -158,7 +158,7 @@ const fetchComments = async (postId) => {
 const submitComment = async (postId) => {
   try {
     const response = await axios.post(
-      `${process.env.VITE_API_BASE_URL}api/posts/${postId}/comments/create/`,
+      `https://dyhj2024.site/api/posts/${postId}/comments/create/`,
       { content: newComment.value },
       { headers: { Authorization: `Token ${localStorage.getItem('token')}` } }
     );
@@ -172,7 +172,7 @@ const submitComment = async (postId) => {
 // 댓글 삭제 함수
 const deleteComment = async (commentId) => {
   try {
-    await axios.delete(`${process.env.VITE_API_BASE_URL}api/posts/${post.value.id}/comments/${commentId}/delete/`, {
+    await axios.delete(`https://dyhj2024.site/api/posts/${post.value.id}/comments/${commentId}/delete/`, {
       headers: { Authorization: `Token ${localStorage.getItem('token')}` },
     });
     comments.value = comments.value.filter(comment => comment.id !== commentId); // 삭제된 댓글 제외
@@ -193,7 +193,7 @@ const editComment = (comment) => {
 const submitEditComment = async () => {
   try {
     const response = await axios.put(
-      `${process.env.VITE_API_BASE_URL}api/posts/${post.value.id}/comments/${editingComment.value}/edit/`,
+      `https://dyhj2024.site/api/posts/${post.value.id}/comments/${editingComment.value}/edit/`,
       { content: editingContent.value },
       { headers: { Authorization: `Token ${localStorage.getItem('token')}` } }
     );
@@ -219,7 +219,7 @@ const deletePost = async () => {
   try {
     const id = route.params.id;
     const token = localStorage.getItem('token');
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/${id}/delete/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/${id}/delete/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -243,7 +243,7 @@ const editPost = () => {
 const toggleLike = async () => {
   try {
     const id = route.params.id;
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/${id}/like/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/${id}/like/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

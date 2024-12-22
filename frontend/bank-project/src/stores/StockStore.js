@@ -118,7 +118,7 @@ export const useStockStore = defineStore('stock', {
   getters: {
     stockUrl: (state) => {
       const stockCode = state.stockMapping[state.selectedStock];
-      return stockCode ? `${process.env.VITE_API_BASE_URL}api/stocks/${stockCode}/` : '';
+      return stockCode ? `https://dyhj2024.site/api/stocks/${stockCode}/` : '';
     }
   },
   actions: {

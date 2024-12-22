@@ -45,7 +45,7 @@ const createPost = async () => {
     const token = localStorage.getItem('token')
     const post = { title: title.value, content: content.value }
     console.log('글 작성 요청:', post)
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/create/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/create/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Token ${token}` },
       

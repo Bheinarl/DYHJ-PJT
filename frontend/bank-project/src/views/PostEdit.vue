@@ -44,7 +44,7 @@ const postId = route.params.id;  // URL에서 게시글 ID를 가져옴
 const loadPost = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/${postId}/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/${postId}/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const updatePost = async () => {
     const token = localStorage.getItem('token');
     const updatedPost = { title: title.value, content: content.value };
     
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}api/posts/${postId}/edit/`, {
+    const response = await fetch(`https://dyhj2024.site/api/posts/${postId}/edit/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
