@@ -36,7 +36,7 @@
           </div>
           <!-- 프로필 사진 출력 -->
           <img 
-            :src="user.profile_picture.startsWith('/media/media/') 
+            :src="user.profile_picture.startsWith('/media/') 
                   ? `https://dyhj2024.site${user.profile_picture}` 
                   : 'https://dyhj2024.site/static/images/default-user.png'" 
             alt="User Avatar" 
