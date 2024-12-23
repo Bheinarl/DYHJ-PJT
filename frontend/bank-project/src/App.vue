@@ -9,7 +9,7 @@ import { computed } from 'vue';
 
 // 토큰 존재 여부 계산
 const showNavbar = computed(() => !!localStorage.getItem('token'));
-console.log(showNavbar.value);
+// console.log(showNavbar.value);
 </script>
 
 <style scoped>

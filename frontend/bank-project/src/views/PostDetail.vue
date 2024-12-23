@@ -94,19 +94,19 @@ const loadPost = async () => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log('API 응답 데이터:', data);  // 디버깅용 출력
+    // console.log('API 응답 데이터:', data);  // 디버깅용 출력
     post.value = data;
 
     if (currentUser.value && post.value.author) {
       isAuthor.value = post.value.author === currentUser.value;
-      console.log('isAuthor:', isAuthor.value);
+      // console.log('isAuthor:', isAuthor.value);
     }
 
     // 사용자가 이미 좋아요를 눌렀는지 확인
     isLiked.value = data.liked_users.includes(currentUser.value);
-    console.log('data:', data.liked_users);
-    console.log('currentUser', currentUser.value);
-    console.log('isLiked', isLiked.value);
+    // console.log('data:', data.liked_users);
+    // console.log('currentUser', currentUser.value);
+    // console.log('isLiked', isLiked.value);
 
   } catch (error) {
     console.error('게시글을 불러오는 중 오류가 발생했습니다:', error);
@@ -134,7 +134,7 @@ const loadCurrentUser = async () => {
     }
 
     const data = await response.json();
-    console.log('여기여기', data)
+    // console.log('여기여기', data)
     currentUser.value = data.nickname ? data.nickname : data.username; // nickname이 존재하면 nickname, 없으면 username
     loadPost();  // 사용자 정보를 불러온 후 게시글을 로드
 
@@ -184,7 +184,7 @@ const deleteComment = async (commentId) => {
 
 // 댓글 수정 활성화
 const editComment = (comment) => {
-  console.log('Editing comment:', comment);
+  // console.log('Editing comment:', comment);
   editingComment.value = comment.id;
   editingContent.value = comment.content;
 };
@@ -263,7 +263,7 @@ const toggleLike = async () => {
 };
 
 const handleImageError = (event) => {
-  console.log("Image failed to load:", event.target.src);  // 이미지 URL 출력
+  // console.log("Image failed to load:", event.target.src);  // 이미지 URL 출력
   event.target.src = '/default-user.png';   // 이미지가 없을 경우 기본 이미지로 대체
 };
 

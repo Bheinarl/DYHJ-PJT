@@ -44,7 +44,7 @@ const createPost = async () => {
   try {
     const token = localStorage.getItem('token')
     const post = { title: title.value, content: content.value }
-    console.log('글 작성 요청:', post)
+    // console.log('글 작성 요청:', post)
     const response = await fetch(`https://dyhj2024.site/api/posts/create/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Token ${token}` },
@@ -55,7 +55,7 @@ const createPost = async () => {
     const result = await response.json()
 
     if (response.ok) {
-      console.log('글 작성 성공', result)
+      // console.log('글 작성 성공', result)
       router.push('/posts')
     } else {
       console.error('글 작성 실패:', result)

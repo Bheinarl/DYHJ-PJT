@@ -77,12 +77,12 @@ const setAlert = async () => {
         target_rate: targetRate.value,
       }),
     });
-    console.log(response); // 추가된 디버깅 로그
+    // console.log(response); // 추가된 디버깅 로그
     const data = await response.json();
     if (response.ok && data.status === 'success') {
       alertSet.value = true;
       alert("목표 환율이 설정되었습니다.");
-      console.log("알림 설정 성공:", data);
+      // console.log("알림 설정 성공:", data);
     } else {
       console.error("알림 설정 실패:", data);
     }
@@ -107,8 +107,8 @@ const fetchExchangeRate = async () => {
         exchangeRate.value = data.current_rate;
         showAlert.value = data.alert;
         targetCurrency.value = currency.value;
-        console.log("현재 환율:", exchangeRate.value); // 디버그용 로그 추가
-        console.log("목표 환율 이하로 내려갔는가?", showAlert.value); // 디버그용 로그 추가
+        // console.log("현재 환율:", exchangeRate.value); // 디버그용 로그 추가
+        // console.log("목표 환율 이하로 내려갔는가?", showAlert.value); // 디버그용 로그 추가
       } else {
         console.error("환율 데이터가 없습니다:", data);
         exchangeRate.value = null;

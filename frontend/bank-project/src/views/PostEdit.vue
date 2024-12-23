@@ -79,7 +79,7 @@ const updatePost = async () => {
     });
 
     if (response.ok) {
-      console.log('게시글 수정 성공');
+      // console.log('게시글 수정 성공');
       router.push(`/posts/${postId}`);  // 수정된 게시글 페이지로 이동
     } else {
       console.error('게시글 수정 실패:', response.statusText);

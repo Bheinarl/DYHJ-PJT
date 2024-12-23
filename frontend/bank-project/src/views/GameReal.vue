@@ -326,8 +326,8 @@ const keyBeforePrice = computed(() => {
 
 // 전체 수익률 = ((총 자산 / 시드 머니) - 1) * 100
 const totalEarningRate = computed(() => {
-  console.log('totalValue.value는 이렇게 출력됩니다.', totalValue.value);
-  console.log('seedMoney는 이렇게 출력됩니다.', seedMoney);
+  // console.log('totalValue.value는 이렇게 출력됩니다.', totalValue.value);
+  // console.log('seedMoney는 이렇게 출력됩니다.', seedMoney);
   return ((totalValue.value / seedMoney) - 1) * 100;
 });
 
@@ -397,7 +397,7 @@ const evaluationPrice = computed(() => {
       const selectedPrice = stockData.value[key]?.[currentDay.value - 1]?.open_price
       result[key] = selectedQuantity * selectedPrice
     }
-    console.log('evaluationPrice의 result[key]는 이렇게 출력됩니다.', result[key]);
+    // console.log('evaluationPrice의 result[key]는 이렇게 출력됩니다.', result[key]);
   }
   return result
 })
@@ -417,7 +417,7 @@ const evaluationProfit = computed(() => {
       const selectedPrice = stockData.value[key]?.[currentDay.value - 1]?.open_price
       result[key] = selectedQuantity * selectedPrice - selectedTransaction
     }
-    console.log('evaluationProfit의 result[key]는 이렇게 출력됩니다.', result[key]);
+    // console.log('evaluationProfit의 result[key]는 이렇게 출력됩니다.', result[key]);
   }
   return result
 })
@@ -437,7 +437,7 @@ const earningRate = computed(() => {
       const selectedPrice = stockData.value[key]?.[currentDay.value - 1]?.open_price
       result[key] = (selectedQuantity * selectedPrice) / selectedTransaction - 1  // 수익률 계산
     }
-    console.log('earningRate의 result[key]는 이렇게 출력됩니다.', result[key]);
+    // console.log('earningRate의 result[key]는 이렇게 출력됩니다.', result[key]);
   }
   return result
 })
@@ -456,7 +456,7 @@ const stockDiversity = computed(() => {
   const totalInvestedStocks = Object.keys(portfolio.value).length; // 현재 투자한 종목 수
   const maxStocks = Object.keys(stockStore.stockSectors).length;   // 전체 투자 가능한 종목 수
   // 종목 분산도 계산 (투자 종목 수 / 전체 종목 수)
-  console.log("totalInvestedStocks,maxStocks",totalInvestedStocks,maxStocks)
+  // console.log("totalInvestedStocks,maxStocks",totalInvestedStocks,maxStocks)
   return totalInvestedStocks / maxStocks; // 분산도가 높을수록 값이 커짐
 });
 
@@ -485,7 +485,7 @@ const calculateRiskLevel = computed(() => {
   // 5. 종목 분산도 (1 - 투자 종목 수 / 전체 종목 수) = 분산도 높을수록 전체 값 작아짐
   const diversity = 1 - stockDiversity.value;
 
-  console.log( tradingFrequency * 0.3 , normalizedHoldingPeriod * 0.3 , assetAllocation * 0.2, sectorDiversityValue * 0.1, diversity * 0.1 );
+  // console.log( tradingFrequency * 0.3 , normalizedHoldingPeriod * 0.3 , assetAllocation * 0.2, sectorDiversityValue * 0.1, diversity * 0.1 );
   /* 1일차 30주만 샀으면                                                          
                     0.3                             0                       0.0716                     0.1                   0.0975
   */
@@ -515,7 +515,7 @@ function selectStock(stockName) {
 
   // 데이터가 없으면 로드 후 업데이트
   if (!stockData.value[selectedStock.value]) {
-    console.log("데이터 로딩 중...");
+    // console.log("데이터 로딩 중...");
     updateStockUrl().then(() => {
       updateChart(); // 데이터 로드 후 차트 업데이트
     });
@@ -585,7 +585,7 @@ async function fetchStockData(apiUrl) {
         open_price: item.open_price,  // 시가
         close_price: item.close_price,  // 종가
       }));
-      console.log('stockData는 이렇게 출력됩니다.', stockData.value);
+      // console.log('stockData는 이렇게 출력됩니다.', stockData.value);
       updateChart();  // 차트 업데이트
     } else {
       console.error('Error fetching stock data:', response.data.message);
@@ -598,10 +598,10 @@ async function fetchStockData(apiUrl) {
 // 뉴스 업데이트
 async function updateNews() {
   const currentDate = ref(startDate.value);
-  console .log('currentDate는 이렇게 출력됩니다.111', currentDate.value);
+  // console .log('currentDate는 이렇게 출력됩니다.111', currentDate.value);
   if (startDate.value != stockData.value['삼성에스디에스']?.[currentDay.value - 1]?.date) {  // 시작 날짜가 주식 데이터의 날짜와 다를 경우
     currentDate.value = stockData.value['삼성에스디에스']?.[currentDay.value - 1]?.date  // 주식 데이터의 날짜로 업데이트
-    console .log('currentDate는 이렇게 출력됩니다.222', currentDate.value);
+    // console .log('currentDate는 이렇게 출력됩니다.222', currentDate.value);
   }
   try {
     // 뉴스 데이터 API 호출 backend/stocks/views.py fetch_news
@@ -663,7 +663,7 @@ async function nextDay() {
     // 게임 종료 및 최종 자산 계산
     currentDay.value++; // 마지막 날짜까지 진행
     updateChart(); // 차트 업데이트
-    console.log('stockData는 이렇게 출력됩니다.', stockData.value);
+    // console.log('stockData는 이렇게 출력됩니다.', stockData.value);
 
     const finalPortfolioValue = Object.keys(portfolio.value).reduce((total, stock) => {  // 최종 포트폴리오 가치 계산
       const closePrice = stockData.value[stock]?.[9]?.close_price || 0; // 10일차 close_price 사용
@@ -672,9 +672,9 @@ async function nextDay() {
         return total + (selectedQuantity * closePrice);
     }, 0);
     finalTotalValue.value = cash.value + finalPortfolioValue; // 최종 자산 계산
-    console.log('Cash:', cash.value);
-    console.log('Final Portfolio Value:', finalPortfolioValue);
-    console.log('Final Total Value:', finalTotalValue.value);
+    // console.log('Cash:', cash.value);
+    // console.log('Final Portfolio Value:', finalPortfolioValue);
+    // console.log('Final Total Value:', finalTotalValue.value);
 
 
     // 🔥 보유 기간 업데이트 (마지막 날까지 보유한 주식 포함)
@@ -685,7 +685,7 @@ async function nextDay() {
         tradePattern.value.holdingPeriod.push(holdingDays); // 보유 기간 기록
       });
     });
-    console.log('Updated holdingPeriod:', tradePattern.value.holdingPeriod);
+    // console.log('Updated holdingPeriod:', tradePattern.value.holdingPeriod);
 
     const riskLevel = calculateRiskLevel.value;  // 위험 선호도 계산
 
@@ -707,7 +707,7 @@ async function nextDay() {
     // 게임 종료 메시지 출력
     alert(`게임 종료!\n최종 자산: ₩${finalTotalValue.value}\n투자자 유형: ${investorType.value}\n주식 데이터 기간: ${startDateValue.value} ~ ${endDateValue.value}`);
     if (response.ok) {
-      console.log('Game over. Your total value is ₩', finalTotalValue.value); 
+      // console.log('Game over. Your total value is ₩', finalTotalValue.value); 
     } else {
       console.error('Failed to update max score:', response.statusText);
     }
@@ -766,7 +766,7 @@ function executeTrade(type) {
         day: currentDay.value  // 거래 시점 추가
       });
       
-      console.log(`매수 완료: ${volume}주, 가격: ${price}`);
+      // console.log(`매수 완료: ${volume}주, 가격: ${price}`);
 
       tradePattern.value.buyCount += volume;  // 매수 거래 횟수 업데이트
       tradePattern.value.totalTrades += volume;  // 총 거래 횟수 업데이트
@@ -774,7 +774,7 @@ function executeTrade(type) {
       const sector = stockStore.stockSectors[selectedStock.value];
       tradePattern.value.sectorPreference[sector] = (tradePattern.value.sectorPreference[sector] || 0) + 1;
 
-      console.log("transactions 확인하기 : ", portfolio.value[selectedStock.value].transactions);
+      // console.log("transactions 확인하기 : ", portfolio.value[selectedStock.value].transactions);
 
     } else {
       alert('Not enough cash or invalid quantity for buying.'); // 에러 메시지
@@ -811,14 +811,14 @@ function executeTrade(type) {
         firstTransaction.quantity -= remainingQuantity;  // 해당 거래 내역의 수량 업데이트
         remainingQuantity = 0;  // 남은 수량 초기화
       }
-      console.log("transactions 확인하기 : ", portfolio.value[selectedStock.value].transactions);
+      // console.log("transactions 확인하기 : ", portfolio.value[selectedStock.value].transactions);
 
     }
 
     // 매도 완료 후 현금 증가
     cash.value += price * volume; // 현금 증가
 
-    console.log(`매도 완료: ${volume}주, 가격: ${price}, 총 매도 금액: ${totalCost}`);
+    // console.log(`매도 완료: ${volume}주, 가격: ${price}, 총 매도 금액: ${totalCost}`);
 
     // 매도 거래 횟수 업데이트
     tradePattern.value.sellCount += volume;
@@ -830,11 +830,11 @@ function executeTrade(type) {
 }
 
 // 위험 선호도 계산
-console.log("Calculating risk level...");
+// console.log("Calculating risk level...");
 try {
   const riskLevel = calculateRiskLevel.value;  // 위험 선호도 계산
   tradePattern.value.riskLevel = riskLevel;
-  console.log("Risk Level: ", riskLevel);
+  // console.log("Risk Level: ", riskLevel);
 } catch (error) {
   console.error("Error accessing calculateRiskLevel: ", error);
 }
@@ -844,7 +844,7 @@ try {
 tradeVolume.value = 0;
 
  
-console.log('tradePattern@@@@@@@@@@@@@@', tradePattern.value);
+// console.log('tradePattern@@@@@@@@@@@@@@', tradePattern.value);
 } // executeTrade 함수 끝
 
 

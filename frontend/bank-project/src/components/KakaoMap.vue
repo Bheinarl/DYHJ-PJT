@@ -99,7 +99,7 @@ const moveToCurrentLocation = () => {
           image: currentMarkerImage
         });
 
-        console.log('현재 위치:', { lat, lng }); // 디버깅용
+        // console.log('현재 위치:', { lat, lng }); // 디버깅용
       },
       (error) => {
         console.error('위치 정보 가져오기 실패:', error);
@@ -131,7 +131,7 @@ const initMap = () => {
       (position) => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
-        console.log('사용자 위치:', { lat: userLat, lng: userLng });
+        // console.log('사용자 위치:', { lat: userLat, lng: userLng });
         createMap(userLat, userLng);
         moveToCurrentLocation();
       },
@@ -141,7 +141,7 @@ const initMap = () => {
       }
     );
   } else {
-    console.log('Geolocation이 지원되지 않음');
+    // console.log('Geolocation이 지원되지 않음');
     createMap(defaultPosition.lat, defaultPosition.lng);
   }
 };

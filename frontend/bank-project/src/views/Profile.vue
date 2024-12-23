@@ -108,7 +108,7 @@ const fetchProfile = async () => {
       },
     });
     profile.value = response.data;
-    console.log(profile.value)
+    // console.log(profile.value)
     // profile_picture가 없거나 잘못된 경우 디폴트 설정
     if (!profile.value.profile_picture || profile.value.profile_picture.includes('/media/static/')) {
       profile.value.profile_picture = defaultProfileImage;
@@ -146,16 +146,16 @@ const updateProfile = async () => {
   formData.append('email', profile.value.email);
 
   // 사용자가 파일을 선택했을 경우만 추가
-  console.log(profilePicture.value)
+  // console.log(profilePicture.value)
   if (profilePicture.value) {
-    console.log(profilePicture.value.name);
-    console.log(profilePicture.value.size);
+    // console.log(profilePicture.value.name);
+    // console.log(profilePicture.value.size);
     formData.append('profile_picture', profilePicture.value);
   }
   
   // formData 확인
   for (let pair of formData.entries()) {
-    console.log(`${pair[0]}: ${pair[1]}`);
+    // console.log(`${pair[0]}: ${pair[1]}`);
   }
 
 

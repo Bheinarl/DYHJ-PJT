@@ -11,7 +11,7 @@ export const useCounterStore = defineStore('counter', () => {
         password2,
         email,
       });
-      console.log('회원가입 성공:', response.data);
+      // console.log('회원가입 성공:', response.data);
       return response.data;
     } catch (error) {
       console.error('회원가입 실패:', error.response?.data || error);
@@ -26,7 +26,7 @@ export const useCounterStore = defineStore('counter', () => {
         username,
         password,
       });
-      console.log('로그인 성공:', response.data);
+      // console.log('로그인 성공:', response.data);
       return response.data;
     } catch (error) {
       console.error('로그인 실패:', error.response?.data || error);

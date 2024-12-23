@@ -160,7 +160,7 @@ const calculateRanks = (data) => {
 };
 
 const fetchLeaderboard = async () => {
-  console.log(leaderboard.value)
+  // console.log(leaderboard.value)
   try {
     const leaderboardResponse = await axios.get(`https://dyhj2024.site/accounts/leaderboard/`, {
       headers: {

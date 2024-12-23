@@ -32,7 +32,7 @@ const login = async () => {
       username: username.value,
       password: password.value,
     });
-    console.log('로그인 성공, 토큰:', response.data.key);
+    // console.log('로그인 성공, 토큰:', response.data.key);
     localStorage.setItem('token', response.data.key);
 
     router.push('/profile'); // 로그인 후 리디렉션
