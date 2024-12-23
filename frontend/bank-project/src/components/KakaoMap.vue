@@ -199,7 +199,7 @@ const searchPlaces = () => {
         );
       });
       const sortedResult = result.sort((a, b) => a.distance - b.distance);
-      console.log('정렬된 검색 결과:', sortedResult);
+      // console.log('정렬된 검색 결과:', sortedResult);
 
       searchResults.value = sortedResult;
       displayMarkers(sortedResult);
