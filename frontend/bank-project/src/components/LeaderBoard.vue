@@ -15,7 +15,7 @@
 
       <div class="notice-container">
         <div class="notice-text">
-          📢 이벤트 안내 (2024.12.16 00:00 ~ 2024.12.23 23:59) 🎁 1위에게는 특별 기프티콘 증정! 🎉 추첨을 통해 추가 1인에게 기프티콘을 드립니다! 📨 당첨자는 이메일로 개별 안내드립니다. 많은 참여 부탁드립니다! 😊
+          📢 이벤트 안내 (2024.12.23 13:00 ~ 2024.12.27 23:59) 🎁 1위에게는 특별 기프티콘 증정! 🎉 추첨을 통해 추가 1인에게 기프티콘을 드립니다! 📨 당첨자는 이메일로 개별 안내드립니다. 많은 참여 부탁드립니다! 😊
         </div>
       </div>
 
@@ -36,11 +36,12 @@
           </div>
           <!-- 프로필 사진 출력 -->
           <img 
-            :src="user.profile_picture.startsWith('/media/') 
+            :src="user.profile_picture && user.profile_picture.includes('/media/') 
                   ? `https://dyhj2024.site${user.profile_picture}` 
                   : 'https://dyhj2024.site/static/images/default-user.png'" 
             alt="User Avatar" 
             class="avatar" 
+            @error="setDefaultImage($event)"
           />
 
 <!-- 
@@ -120,6 +121,10 @@ const leaderboard = ref([
 const loading = ref(true);
 const profile = ref({ max_score: 0, username: "" });
 const myRank = ref(null);
+
+const setDefaultImage = (event) => {
+  event.target.src = 'https://dyhj2024.site/static/images/default-user.png';
+};
 
 const topThree = computed(() =>
   leaderboard.value
